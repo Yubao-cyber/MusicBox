@@ -111,21 +111,29 @@ public class MusicService extends Service {
                     break;
                     //上一首
                 case 3:
+                    mPlayer.stop();
+                    status = 0x11;
                     current--;
                     if (current < 0)
                     {
                         current = 2;
                     }
+                    mPlayer.start();
+                    status = 0x12;
                     // 准备并播放音乐
                       prepareAndPlay(musics[current]);
                     break;
                 case 4:
                     //下一首
+                    mPlayer.stop();
+                    status = 0x11;
                     current++;
                     if (current >= 3)
                     {
                         current = 0;
                     }
+                    mPlayer.start();
+                    status = 0x12;
                     // 准备并播放音乐
                       prepareAndPlay(musics[current]);
                     break;
